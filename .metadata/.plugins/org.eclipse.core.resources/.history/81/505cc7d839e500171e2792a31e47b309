@@ -1,0 +1,27 @@
+package Files;
+
+//Java Program to illustrate reading from text file
+//as string in Java
+import java.nio.file.*;
+import java.util.*;
+
+public class _Files {
+
+public static String readFileAsString(String fileName)throws Exception
+{
+ String data = "";
+ data = new String(Files.readAllBytes(Paths.get(fileName)));
+ return data;
+}
+
+public static void main(String[] args) throws Exception
+{
+ String data = readFileAsString("/home/ccoew/3476/Assgn1/src/one.txt");
+ String[] s = data.split("\\^\\w");
+ for(String w :s) {
+	 System.out.println(w);
+ }
+
+}
+
+}
