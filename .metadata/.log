@@ -110,3 +110,67 @@ Java Model Exception: Java Model Status [Unknown javadoc format for String [in S
 	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:166)
 !SUBENTRY 1 org.eclipse.jdt.core 4 1009 2017-12-20 09:52:13.633
 !MESSAGE Unknown javadoc format for String [in String.class [in java.lang [in /usr/lib/jvm/java-1.7.0-openjdk-1.7.0.60-2.4.3.0.fc20.x86_64/jre/lib/rt.jar]]]
+!SESSION Wed Dec 27 08:22:17 IST 2017 ------------------------------------------
+!ENTRY org.eclipse.equinox.launcher 4 0 2017-12-27 08:22:17.601
+!MESSAGE Could not find extension: org.eclipse.wst.jsdt.nashorn.extension
+!SESSION 2017-12-27 08:22:17.339 -----------------------------------------------
+eclipse.buildId=4.6.1.v20160915-0852
+java.version=1.8.0_91
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_IN
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY org.eclipse.osgi 4 0 2017-12-27 08:22:19.715
+!MESSAGE Bundle org.eclipse.wst.jsdt.nashorn.extension not found.
+
+!ENTRY org.eclipse.core.resources 2 10035 2017-12-27 08:22:39.288
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.mylyn.tasks.index.core 4 0 2017-12-27 08:22:59.538
+!MESSAGE Failed to update task list index
+!STACK 1
+org.eclipse.core.runtime.CoreException: Unexpected exception: Format version is not supported (resource BufferedChecksumIndexInput(NIOFSIndexInput(path="/home/ccoew/3476/.metadata/.mylyn/.taskListIndex/segments_1"))): -11 (needs to be between 1071082519 and 1071082519). This version of Lucene only supports indexes created with release 4.0 and later.
+	at org.eclipse.mylyn.internal.tasks.index.core.TaskListIndex.maintainIndex(TaskListIndex.java:1099)
+	at org.eclipse.mylyn.internal.tasks.index.core.TaskListIndex.access$0(TaskListIndex.java:1066)
+	at org.eclipse.mylyn.internal.tasks.index.core.TaskListIndex$MaintainIndexJob.run(TaskListIndex.java:183)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: org.apache.lucene.index.IndexFormatTooOldException: Format version is not supported (resource BufferedChecksumIndexInput(NIOFSIndexInput(path="/home/ccoew/3476/.metadata/.mylyn/.taskListIndex/segments_1"))): -11 (needs to be between 1071082519 and 1071082519). This version of Lucene only supports indexes created with release 4.0 and later.
+	at org.apache.lucene.index.SegmentInfos.readCommit(SegmentInfos.java:299)
+	at org.apache.lucene.index.IndexWriter.<init>(IndexWriter.java:910)
+	at org.eclipse.mylyn.internal.tasks.index.core.TaskListIndex.createIndexWriter(TaskListIndex.java:1274)
+	at org.eclipse.mylyn.internal.tasks.index.core.TaskListIndex.rebuildIndexCompletely(TaskListIndex.java:1217)
+	at org.eclipse.mylyn.internal.tasks.index.core.TaskListIndex.maintainIndex(TaskListIndex.java:1085)
+	... 3 more
+!SUBENTRY 1 org.eclipse.mylyn.tasks.index.core 4 0 2017-12-27 08:22:59.586
+!MESSAGE Unexpected exception: Format version is not supported (resource BufferedChecksumIndexInput(NIOFSIndexInput(path="/home/ccoew/3476/.metadata/.mylyn/.taskListIndex/segments_1"))): -11 (needs to be between 1071082519 and 1071082519). This version of Lucene only supports indexes created with release 4.0 and later.
+!STACK 0
+org.apache.lucene.index.IndexFormatTooOldException: Format version is not supported (resource BufferedChecksumIndexInput(NIOFSIndexInput(path="/home/ccoew/3476/.metadata/.mylyn/.taskListIndex/segments_1"))): -11 (needs to be between 1071082519 and 1071082519). This version of Lucene only supports indexes created with release 4.0 and later.
+	at org.apache.lucene.index.SegmentInfos.readCommit(SegmentInfos.java:299)
+	at org.apache.lucene.index.IndexWriter.<init>(IndexWriter.java:910)
+	at org.eclipse.mylyn.internal.tasks.index.core.TaskListIndex.createIndexWriter(TaskListIndex.java:1274)
+	at org.eclipse.mylyn.internal.tasks.index.core.TaskListIndex.rebuildIndexCompletely(TaskListIndex.java:1217)
+	at org.eclipse.mylyn.internal.tasks.index.core.TaskListIndex.maintainIndex(TaskListIndex.java:1085)
+	at org.eclipse.mylyn.internal.tasks.index.core.TaskListIndex.access$0(TaskListIndex.java:1066)
+	at org.eclipse.mylyn.internal.tasks.index.core.TaskListIndex$MaintainIndexJob.run(TaskListIndex.java:183)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SUBENTRY 1 org.eclipse.mylyn.tasks.index.core 4 0 2017-12-27 08:22:59.586
+!MESSAGE Unexpected exception: Format version is not supported (resource BufferedChecksumIndexInput(NIOFSIndexInput(path="/home/ccoew/3476/.metadata/.mylyn/.taskListIndex/segments_1"))): -11 (needs to be between 1071082519 and 1071082519). This version of Lucene only supports indexes created with release 4.0 and later.
+!STACK 0
+org.apache.lucene.index.IndexFormatTooOldException: Format version is not supported (resource BufferedChecksumIndexInput(NIOFSIndexInput(path="/home/ccoew/3476/.metadata/.mylyn/.taskListIndex/segments_1"))): -11 (needs to be between 1071082519 and 1071082519). This version of Lucene only supports indexes created with release 4.0 and later.
+	at org.apache.lucene.index.SegmentInfos.readCommit(SegmentInfos.java:299)
+	at org.apache.lucene.index.IndexWriter.<init>(IndexWriter.java:910)
+	at org.eclipse.mylyn.internal.tasks.index.core.TaskListIndex.createIndexWriter(TaskListIndex.java:1274)
+	at org.eclipse.mylyn.internal.tasks.index.core.TaskListIndex.rebuildIndexCompletely(TaskListIndex.java:1217)
+	at org.eclipse.mylyn.internal.tasks.index.core.TaskListIndex.maintainIndex(TaskListIndex.java:1085)
+	at org.eclipse.mylyn.internal.tasks.index.core.TaskListIndex.access$0(TaskListIndex.java:1066)
+	at org.eclipse.mylyn.internal.tasks.index.core.TaskListIndex$MaintainIndexJob.run(TaskListIndex.java:183)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.epp.logging.aeri.ide 2 10 2017-12-27 08:30:14.948
+!MESSAGE Updating the index from remote ‘https://www.eclipse.org/downloads/download.php?r=1&file=/technology/epp/logging/problems.zip’ failed with exception: org.apache.lucene.index.IndexFormatTooOldException: Format version is not supported (resource BufferedChecksumIndexInput(MMapIndexInput(path="/tmp/1514343614550-0/segments_2"))): -11 (needs to be between 1071082519 and 1071082519). This version of Lucene only supports indexes created with release 4.0 and later. ; version: 2.0.3.201610041015
+!STACK 0
+org.eclipse.epp.logging.aeri.core.util.Logs$LogTraceException
+	at org.eclipse.epp.logging.aeri.core.util.Logs$LogTraceException.newTrace(Logs.java:387)
+	at org.eclipse.epp.logging.aeri.core.util.Logs.log(Logs.java:134)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.ServerProblemsHistory$UpdateIndexJob.run(ServerProblemsHistory.java:322)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
