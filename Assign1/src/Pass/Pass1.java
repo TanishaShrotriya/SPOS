@@ -6,14 +6,14 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Pass1 {
 
 	
 	public static void main(String[] args) throws Exception {
-		// TODO Auto-generated method stub
-
 		
+		// reading instructions from code 
 		String data = readFileAsString("/home/ccoew/3476/Assign1/src/input");
 		String[] s = data.split("\\W");
 		 
@@ -27,6 +27,7 @@ public class Pass1 {
 	
 		System.out.println(str.toString());
 		
+		//read the mnemonics file
 		
 	    String mnemo = readFileAsString("/home/ccoew/3476/Assign1/src/mnemonics");
 	    String[] mnem = mnemo.split("\\s");
@@ -43,34 +44,58 @@ public class Pass1 {
 		
 		System.out.println(mnemonics.toString());
 		
+		// wrapping the created ref array around object of class mnemonics
 		
 		Mnemonics m;
-		ArrayList<Mnemonics> ref = new ArrayList<Mnemonics>();
-		for(Mnemonics x : ref) {
-			m=new Mnemonics();
-		    for(String e : mnemonics) {
-				if(mnemonics.indexOf(e)%3==0) {
-					m.name=e;
-				}
-				else if(mnemonics.indexOf(e)%3==1) {
-					m.opcode=e;
-				}
-				else {
-					m.len=Integer.parseInt(e);
-				}
+		ArrayList<Mnemonics> ref = new ArrayList<Mnemonics>();	    
+		String n=null,op=null,t=null;
+	    int l=0;
+	    for(int i=0;i<mnemonics.size();i++) {
+			if(i%4==0) {
+				n=mnemonics.get(i);
+				System.out.println("0 : " +mnemonics.get(i) );
+				
+			}
+			else if(i%4==1) {
+				t=mnemonics.get(i);
+				System.out.println("1 : " +mnemonics.get(i) );
+				
+			}
+			else if(i%4==2) {
+				op=mnemonics.get(i);
+				System.out.println("2: " +mnemonics.get(i) );
+				
+			}
+			else if(i%4==3) {
+				l=Integer.parseInt(mnemonics.get(i));
+				System.out.println("3 : " +mnemonics.get(i) );
+				m=new Mnemonics();
+				m.name=n;
+				m.len=l;
+				m.opcode=op;
+				m.type=t;
 				ref.add(m);
-		    }
+			
+			}
 		}
-		System.out.println(ref.toString());
-			
 	
-		
-		
-		
-		
-		
-	    for(String w :str) {
+	    System.out.println(ref.toString());
 			
+	    String opIn=null;
+		//stage one of parse one - compare with regs,start and so on..
+	    for(int i=0;i<str.size();i++) {
+		
+	    	for(int j=0;j<ref.size();j++) {
+	    		
+	    		Mnemonics mi = new Mnemonics();
+	    		mi=ref.get(j);
+	    		if(str.get(i).equals(mi.name)){
+	    			opIn="("+ref.get(j).type+","+mi.opcode+")";
+	    			break;			
+	    		}
+	    		System.out.println(opIn);
+				
+	    	}
 		}
 
 	}
