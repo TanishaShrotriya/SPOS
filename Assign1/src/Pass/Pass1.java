@@ -15,7 +15,8 @@ public class Pass1 {
 		
 		// reading instructions from code 
 		String data = readFileAsString("/home/ccoew/3476/Assign1/src/input");
-		String[] s = data.split("\\W");
+		String[] s = data.split("[\\s,]");
+		//split based on space
 		 
 		ArrayList<String> str = new ArrayList<String>();
 		for(String e : s){
@@ -82,19 +83,63 @@ public class Pass1 {
 	    System.out.println(ref.toString());
 			
 	    String opIn=null;
+	    int lc=0;
+
 		//stage one of parse one - compare with regs,start and so on..
 	    for(int i=0;i<str.size();i++) {
 		
-	    	for(int j=0;j<ref.size();j++) {
-	    		
-	    		Mnemonics mi = new Mnemonics();
-	    		mi=ref.get(j);
-	    		if(str.get(i).equals(mi.name)){
-	    			opIn="("+ref.get(j).type+","+mi.opcode+")";
-	    			break;			
-	    		}
+	       if(true){
+		        for(int j=0;j<ref.size();j++) {
+		    		
+		    		String st=null;
+		    		if(str.get(i).equals(ref.get(j).name)){
+		    			st=str.get(i)+" "+ ref.get(j).name+" ";
+		    			
+		    			if(lc!=0) {
+		    			opIn=lc+" ("+ref.get(j).type+","+ref.get(j).opcode+")";
+		    			}
+		    			else {
+			    			opIn="("+ref.get(j).type+","+ref.get(j).opcode+")";
+			    		}
+		    			lc=lc+ref.get(j).len;
+		    			System.out.println(st+opIn);System.out.println(st+opIn);
+		    			write("/home/ccoew/3476/Assign1/src/IC",opIn);
+		    			
+		    			break;			
+		    		}
+		    	}
+	        }
+	    	if(str.get(i).matches("\\d*")){
+		   			
+	    		opIn=" "+str.get(i)+"\n";
+	   			lc=Integer.parseInt(str.get(i));
 	    		System.out.println(opIn);
-				
+	   			
+	   			write("/home/ccoew/3476/Assign1/src/IC",opIn);
+	   		}
+	    	
+	    	if(str.get(i).matches(".REG")){
+		   			
+	            	
+		    		opIn=" "+str.get(i)+",";
+		   			System.out.println(opIn);
+			   	    write("/home/ccoew/3476/Assign1/src/IC",opIn);
+		    					
+			}
+            
+	    	if(str.get(i).matches("=.*")){
+		   			
+            	
+	    		opIn="(L,"+str.get(i).replaceAll("\\W","")+")\n";
+	   			System.out.println(opIn);
+		   	    write("/home/ccoew/3476/Assign1/src/IC",opIn);
+	    					
+		    }
+	 
+	    	else {
+	    		opIn=str.get(i)+"\n";
+	   			System.out.println(opIn);
+		   	    write("/home/ccoew/3476/Assign1/src/IC",opIn);
 	    	}
 		}
 
