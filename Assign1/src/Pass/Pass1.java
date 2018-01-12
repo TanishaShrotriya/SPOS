@@ -85,38 +85,40 @@ public class Pass1 {
 		//stage one of parse one - compare with regs,start and so on..
 	    for(int i=0;i<str.size();i++) {
 		    flag=0;
-	       //if(true){
 		    System.out.println(lc);
-		        for(int j=0;j<ref.size();j++) {
-		    		
-		    		String st=null;
-		    	//	System.out.println(str.get(i)+(ref.get(j).name));
-		    		if(str.get(i).equals(ref.get(j).name)){
-		    			
-		    			st=str.get(i)+" "+ ref.get(j).name+" ";
-		    			
-		    			if(lc!=0) {
-		    				opIn=lc+" ("+ref.get(j).type+","+ref.get(j).opcode+")";
-		    				if(ref.get(j).len!=256){
-		    					lc=lc+ref.get(j).len;
-		    				}
-		    				System.out.println("For other");
-		    			}
-		    			else {
-		    				System.out.println("For start");
-			    			opIn="("+ref.get(j).type+","+ref.get(j).opcode+")";
-			    		}
-		    			
-		    			
-		    			System.out.println(st);
-		    			write("/home/ccoew/3476/Assign1/src/IC",opIn);
-		    			
-		    			flag=1;
-		    			System.out.println("Here "+flag);
-		    			break;			
+	        for(int j=0;j<ref.size();j++) {
+	    		
+	    		String st=null;
+	    	    String one=str.get(i);
+	    	    String two=ref.get(j).name;
+	    	    
+	    		//	System.out.println(str.get(i)+(ref.get(j).name));
+	    		if(one.equals(two)){
+	    			
+	    			st=str.get(i)+" "+ ref.get(j).name+" ";
+	    			
+	    			if(lc!=0) {
+	    				opIn=lc+" ("+ref.get(j).type+","+ref.get(j).opcode+")";
+	    				if(ref.get(j).len!=256){
+	    					lc=lc+ref.get(j).len;
+	    				}
+	    				System.out.println("For other");
+	    			}
+	    			
+	    			else {
+	    				System.out.println("For start");
+		    			opIn="("+ref.get(j).type+","+ref.get(j).opcode+")";
 		    		}
-		    	}
-	        //}
+	    			
+	    			System.out.println(st);
+	    			write("/home/ccoew/3476/Assign1/src/IC",opIn);
+	    			
+	    			flag=1;
+	    			System.out.println("Here "+flag);
+	    			break;			
+	    		}
+	    	}
+
 	    	if(str.get(i).matches("\\d*")){
 		   			
 	    		opIn=" "+str.get(i)+"\n";
@@ -129,9 +131,9 @@ public class Pass1 {
 	    	if(str.get(i).matches(".REG")){
 		   			
 	    		flag=1;	
-		    		opIn=" "+str.get(i)+",";
-		   			System.out.println(opIn);
-			   	    write("/home/ccoew/3476/Assign1/src/IC",opIn);
+	    		opIn=" "+str.get(i)+",";
+	   			System.out.println(opIn);
+		   	    write("/home/ccoew/3476/Assign1/src/IC",opIn);
 		    					
 			}
             
@@ -146,20 +148,39 @@ public class Pass1 {
 	 
 	    	
 	    	else if(flag==0) {
-	    		System.out.println(flag);
-	    		if(str.get(i).matches(".*:")){
-
-		    		opIn=str.get(i)+"\n";
-		   			System.out.println(opIn);
-		   		    write("/home/ccoew/3476/Assign1/src/SYMTAB",opIn);
-			    	
-	    		}
-	    		else{
-	    		opIn=str.get(i)+"\n";
-	   			System.out.println("THIS"+opIn);
-	   			write("/home/ccoew/3476/Assign1/src/SYMTAB",opIn);	
-		   	    write("/home/ccoew/3476/Assign1/src/IC",opIn);
-	    		}
+	    		
+	    		// Reading SYMTAB file to compare already existing symbols
+	    		String three = readFileAsString("/home/ccoew/3476/Assign1/src/SYMTAB");
+	    	    String[] trois= three.split("\\s");
+	    	    int f=0;
+	    	    // to avoid repeats
+	    	    for(String s1 : trois ){
+	    	    	
+	    	    	// get the newest symbol, and strip of all digits and non-word characters
+	    	    	System.out.print(s1);
+	    	    	String s2=str.get(i).replaceAll("[\\W\\d*]","");
+	    	    	if(s1.matches(s2)){
+	    	    		f=1;
+	    	    		break;
+	    	    	}
+	    	    }
+                if(f!=1){
+		    		System.out.println(flag);
+		    		// for labels 
+		    		if(str.get(i).matches(".*:")){
+		    			opIn=str.get(i).replaceAll("\\W", "")+"\n";
+			   			System.out.println(opIn);
+			   		    write("/home/ccoew/3476/Assign1/src/SYMTAB",opIn);
+				    	
+		    		}
+		    		// for variables
+		    		else{
+		    			opIn=str.get(i)+"\n";
+		    			System.out.println("THIS"+opIn);
+		    			write("/home/ccoew/3476/Assign1/src/SYMTAB",opIn);	
+		    			write("/home/ccoew/3476/Assign1/src/IC",opIn);
+		    		}
+                }
 	    	}
 		}
 
