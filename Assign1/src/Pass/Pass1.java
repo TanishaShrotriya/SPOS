@@ -54,22 +54,18 @@ public class Pass1 {
 	    for(int i=0;i<mnemonics.size();i++) {
 			if(i%4==0) {
 				n=mnemonics.get(i);
-				System.out.println("0 : " +mnemonics.get(i) );
 				
 			}
 			else if(i%4==1) {
 				t=mnemonics.get(i);
-				System.out.println("1 : " +mnemonics.get(i) );
-				
+			
 			}
 			else if(i%4==2) {
 				op=mnemonics.get(i);
-				System.out.println("2: " +mnemonics.get(i) );
 				
 			}
 			else if(i%4==3) {
 				l=Integer.parseInt(mnemonics.get(i));
-				System.out.println("3 : " +mnemonics.get(i) );
 				m=new Mnemonics();
 				m.name=n;
 				m.len=l;
@@ -84,43 +80,55 @@ public class Pass1 {
 			
 	    String opIn=null;
 	    int lc=0;
-
+        int flag=0; // used for the final condition for finding symbols
+        
 		//stage one of parse one - compare with regs,start and so on..
 	    for(int i=0;i<str.size();i++) {
-		
-	       if(true){
+		    flag=0;
+	       //if(true){
+		    System.out.println(lc);
 		        for(int j=0;j<ref.size();j++) {
 		    		
 		    		String st=null;
+		    	//	System.out.println(str.get(i)+(ref.get(j).name));
 		    		if(str.get(i).equals(ref.get(j).name)){
+		    			
 		    			st=str.get(i)+" "+ ref.get(j).name+" ";
 		    			
 		    			if(lc!=0) {
-		    			opIn=lc+" ("+ref.get(j).type+","+ref.get(j).opcode+")";
+		    				opIn=lc+" ("+ref.get(j).type+","+ref.get(j).opcode+")";
+		    				if(ref.get(j).len!=256){
+		    					lc=lc+ref.get(j).len;
+		    				}
+		    				System.out.println("For other");
 		    			}
 		    			else {
+		    				System.out.println("For start");
 			    			opIn="("+ref.get(j).type+","+ref.get(j).opcode+")";
 			    		}
-		    			lc=lc+ref.get(j).len;
-		    			System.out.println(st+opIn);System.out.println(st+opIn);
+		    			
+		    			
+		    			System.out.println(st);
 		    			write("/home/ccoew/3476/Assign1/src/IC",opIn);
 		    			
+		    			flag=1;
+		    			System.out.println("Here "+flag);
 		    			break;			
 		    		}
 		    	}
-	        }
+	        //}
 	    	if(str.get(i).matches("\\d*")){
 		   			
 	    		opIn=" "+str.get(i)+"\n";
 	   			lc=Integer.parseInt(str.get(i));
 	    		System.out.println(opIn);
-	   			
+	   			flag=1;
 	   			write("/home/ccoew/3476/Assign1/src/IC",opIn);
 	   		}
 	    	
 	    	if(str.get(i).matches(".REG")){
 		   			
-	            	
+	    		flag=1;	
 		    		opIn=" "+str.get(i)+",";
 		   			System.out.println(opIn);
 			   	    write("/home/ccoew/3476/Assign1/src/IC",opIn);
@@ -129,17 +137,29 @@ public class Pass1 {
             
 	    	if(str.get(i).matches("=.*")){
 		   			
-            	
+	    		flag=1;
 	    		opIn="(L,"+str.get(i).replaceAll("\\W","")+")\n";
 	   			System.out.println(opIn);
 		   	    write("/home/ccoew/3476/Assign1/src/IC",opIn);
 	    					
 		    }
 	 
-	    	else {
+	    	
+	    	else if(flag==0) {
+	    		System.out.println(flag);
+	    		if(str.get(i).matches(".*:")){
+
+		    		opIn=str.get(i)+"\n";
+		   			System.out.println(opIn);
+		   		    write("/home/ccoew/3476/Assign1/src/SYMTAB",opIn);
+			    	
+	    		}
+	    		else{
 	    		opIn=str.get(i)+"\n";
-	   			System.out.println(opIn);
+	   			System.out.println("THIS"+opIn);
+	   			write("/home/ccoew/3476/Assign1/src/SYMTAB",opIn);	
 		   	    write("/home/ccoew/3476/Assign1/src/IC",opIn);
+	    		}
 	    	}
 		}
 

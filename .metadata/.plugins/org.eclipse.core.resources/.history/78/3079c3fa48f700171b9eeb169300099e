@@ -1,0 +1,11 @@
+﻿START
+ 200
+ AREG,(L,5)
+ AREG,A
+﻿START
+ 200
+ AREG,(L,5)
+ AREG,A
+ 200
+ AREG,(L,5)
+ AREG,A

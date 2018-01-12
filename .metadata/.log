@@ -2321,3 +2321,27 @@ Command-line arguments:  -os linux -ws gtk -arch x86_64
 
 !ENTRY org.eclipse.osgi 4 0 2018-01-10 08:16:29.221
 !MESSAGE Bundle org.eclipse.wst.jsdt.nashorn.extension not found.
+!SESSION Thu Jan 11 08:20:08 IST 2018 ------------------------------------------
+!ENTRY org.eclipse.equinox.launcher 4 0 2018-01-11 08:20:08.518
+!MESSAGE Could not find extension: org.eclipse.wst.jsdt.nashorn.extension
+!SESSION 2018-01-11 08:20:08.331 -----------------------------------------------
+eclipse.buildId=4.6.1.v20160915-0852
+java.version=1.8.0_91
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_IN
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY org.eclipse.osgi 4 0 2018-01-11 08:20:10.133
+!MESSAGE Bundle org.eclipse.wst.jsdt.nashorn.extension not found.
+!SESSION Fri Jan 12 08:18:06 IST 2018 ------------------------------------------
+!ENTRY org.eclipse.equinox.launcher 4 0 2018-01-12 08:18:06.327
+!MESSAGE Could not find extension: org.eclipse.wst.jsdt.nashorn.extension
+!SESSION 2018-01-12 08:18:06.139 -----------------------------------------------
+eclipse.buildId=4.6.1.v20160915-0852
+java.version=1.8.0_91
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_IN
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY org.eclipse.osgi 4 0 2018-01-12 08:18:07.941
+!MESSAGE Bundle org.eclipse.wst.jsdt.nashorn.extension not found.
