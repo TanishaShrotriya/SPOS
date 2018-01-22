@@ -520,8 +520,13 @@ public class Pass1 {
 			
 		}
 
-		int last = icValues.size()-1;
-		if(!icValues.get(last).equals("(AD,02)")) {
+		int end=0;
+		for(int x=0;x<icValues.size();x++) {
+			if(icValues.get(x).equals("(AD,02)")) {
+				end=1;
+			}
+		}
+		if(end==0) {
 			System.out.println("ERROR : MISSING END OF FILE!!");
 		}
 	}
