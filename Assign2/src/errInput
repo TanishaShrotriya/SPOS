@@ -1,0 +1,7 @@
+     START 200
+     MOVER AREG,A
+A:   MOVER BREG,B
+     ADD
+SUB: MOVEM AREG,A
+A:	 XYZ CREG,='2'
+	 STOP 

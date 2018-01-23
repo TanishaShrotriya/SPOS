@@ -10,12 +10,12 @@ import java.util.Iterator;
 
 public class Pass1 {
 
-	public static final String input = "/home/tanishashrotriya/Documents/SPOS/Assign1/src/input";
-	public static final String fileMnem ="/home/tanishashrotriya/Documents/SPOS/Assign1/src/mnemonics";
-	public static final String fileIC="/home/tanishashrotriya/Documents/SPOS/Assign1/src/IC";
-	public static final String fileSYM="/home/tanishashrotriya/Documents/SPOS/Assign1/src/SYMTAB";
-	public static final String fileLIT="/home/tanishashrotriya/Documents/SPOS/Assign1/src/LITTAB";
-	public static final String filePOOL="/home/tanishashrotriya/Documents/SPOS/Assign1/src/POOLTAB";
+	public static final String input = "/home/tanishashrotriya/Documents/SPOS/Assign2/src/input";
+	public static final String fileMnem ="/home/tanishashrotriya/Documents/SPOS/Assign2/src/mnemonics";
+	public static final String fileIC="/home/tanishashrotriya/Documents/SPOS/Assign2/src/IC";
+	public static final String fileSYM="/home/tanishashrotriya/Documents/SPOS/Assign2/src/SYMTAB";
+	public static final String fileLIT="/home/tanishashrotriya/Documents/SPOS/Assign2/src/LITTAB";
+	public static final String filePOOL="/home/tanishashrotriya/Documents/SPOS/Assign2/src/POOLTAB";
 	
 	public static void main(String[] args) throws Exception {
 		
@@ -223,7 +223,7 @@ public class Pass1 {
 							e.value=str.get(i).replaceAll("\\W","");
 							litArray.add(e);
 			      		   	opIn="(L,"+litc+")\n";
-			      		   	litc++;
+			      		    litc++;
 					   	    write(fileIC,opIn,true);
 					   	    
 	    				}
